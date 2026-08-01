@@ -1,120 +1,57 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import Project from './components/Project'
+import './index.css'
 
 function App() {
   const [count, setCount] = useState(0)
 
+
+  const projects = [
+    {
+      projectLink: `project-sfi-codes.html`,
+      thumbnail: "SfiCodes",
+      projectText: "Personal Website",
+    },
+    {
+      projectLink: `project-plant-trees.html`,
+      thumbnail: "PlantTrees",
+      projectText: "Android Kotlin and Java App",
+    },
+    {
+      projectLink: `project-clash.html`,
+      thumbnail: "Clash",
+      projectText: "C# Multiplayer Game",
+    },
+    {
+      projectLink: `project-secure-chat.html`,
+      thumbnail: "Secure Chat",
+      projectText: "Java Application",
+    },
+  ]
+
+
   return (
     <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
+      <nav>
+        <a href="index.html">Home</a>
+      </nav>
+      <header>
+        <h1>Sfi Codes</h1>
+        <p>Cyber Security Graduate, interested in technology, developing projects and taking on
+          challenges.</p>
+        <p>Scroll down to see my projects</p>
+      </header>
+      <main>
+        <h1>Projects</h1>
+        <Project projects={projects} />
+      </main>
+      <footer>
+              <p>
+          I've also worked in Other roles and they were more focused on developing my non technical skills.
+          Feel free to have a read.
+        </p>
+        <p>©Copyright 2050 by nobody. All rights reversed.</p>
+      </footer>
     </>
   )
 }
