@@ -1,59 +1,75 @@
-import { useState } from 'react'
-import Project from './components/Project'
+import { useState, useEffect } from 'react'
+import Footer from './components/Footer'
+import Header from './components/Header'
+
 import './index.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [page, setPage] = useState('index')
 
 
   const projects = [
     {
-      projectLink: `project-sfi-codes.html`,
+      url: `sfi-codes.html`,
       thumbnail: "SfiCodes",
-      projectText: "Personal Website",
+      title: "Personal Website",
     },
     {
-      projectLink: `project-plant-trees.html`,
+      url: `plant-trees.html`,
       thumbnail: "PlantTrees",
-      projectText: "Android Kotlin and Java App",
+      title: "Android Kotlin and Java App",
     },
     {
-      projectLink: `project-clash.html`,
+      url: `clash.html`,
       thumbnail: "Clash",
-      projectText: "C# Multiplayer Game",
+      title: "C# Multiplayer Game",
     },
     {
-      projectLink: `project-secure-chat.html`,
+      url: `secure-chat.html`,
       thumbnail: "Secure Chat",
-      projectText: "Java Application",
+      title: "Java Application",
     },
   ]
 
+  const handlePage = (title) => {
+    setPage(title);
+  }
+
+  useEffect(() => {
+    console.log('Current state:', page);
+  }, [page]); // Runs every time 'count' changes
+
+
+  const Projects = () => {
+
+    return <>
+      {
+        projects.map((project, i) =>
+          <div className='projectColumn' key={i}>
+            <button onClick={() => { handlePage(project.title) }}>
+              <img className='thumbnail' src='/src/assets/hero.png'></img>
+              <p>{project.title}</p>
+            </button>
+          </div>
+
+        )
+      }
+    </>
+  }
 
   return (
     <>
       <nav>
         <a href="index.html">Home</a>
       </nav>
-      <header>
-        <h1>Sfi Codes</h1>
-        <p>Cyber Security Graduate, interested in technology, developing projects and taking on
-          challenges.</p>
-        <p>Scroll down to see my projects</p>
-      </header>
+      <Header />
       <main>
         <h2>Projects</h2>
-   <div className='projectRow'>
-          <Project projects={projects} />
-    </div>    
+        <div className='projectRow'>
+          <Projects></Projects>
+        </div>
       </main>
-      <footer>
-        <p>
-          I've also worked in Other roles and they were more focused on developing my non technical skills.
-          Feel free to have a read.
-        </p>
-        <p>©Copyright 2050 by nobody. All rights reversed.</p>
-      </footer>
+      <Footer />
     </>
   )
 }

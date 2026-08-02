@@ -59,7 +59,15 @@ header p.scroll {
 }
 
 .projectColumn {
-    flex: 47.5%
+    padding: 1%;
+    flex: 45.5%
+}
+.thumbnail{
+        text-align: center;
+        border: 1px solid black;
+        max-width: 100%;
+        box-sizing: border-box
+    
 }
 
 footer {
