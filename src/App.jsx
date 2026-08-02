@@ -42,11 +42,13 @@ function App() {
         <p>Scroll down to see my projects</p>
       </header>
       <main>
-        <h1>Projects</h1>
-        <Project projects={projects} />
+        <h2>Projects</h2>
+   <div className='projectRow'>
+          <Project projects={projects} />
+    </div>    
       </main>
       <footer>
-              <p>
+        <p>
           I've also worked in Other roles and they were more focused on developing my non technical skills.
           Feel free to have a read.
         </p>
