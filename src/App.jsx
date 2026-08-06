@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import Footer from './components/Footer'
 import Header from './components/Header'
-
+import Project from './components/Project'
 import './index.css'
 
 function App() {
@@ -37,10 +37,10 @@ function App() {
 
   useEffect(() => {
     console.log('Current state:', page);
-  }, [page]); // Runs every time 'count' changes
+  }, [page]); // Runs every time 'page' changes
 
 
-  const Projects = () => {
+  const ProjectList = () => {
 
     return <>
       {
@@ -56,19 +56,46 @@ function App() {
       }
     </>
   }
+  const Index = () => {
+    return (
+      <>
+        <Header />
+        <main>
+          <h2>Projects</h2>
+          <div className='projectRow'>
+            <ProjectList></ProjectList>
+          </div>
+        </main>
+      </>
+    )
+  }
 
+  const currentPage = (current) => {
+    switch (current) {
+      case 'Personal Website':
+        return <Project project={projects.find(project => project.title === 'Personal Website')} />
+        break
+
+      case 'Java Application':
+        return <Project project={projects.find(project => project.title === 'Java Application')} />
+        break
+
+      case 'C# Multiplayer Game':
+        return <Project project={projects.find(project => project.title === 'C# Multiplayer Game')} />
+        break
+
+      case 'Android Kotlin and Java App':
+        return <Project project={projects.find(project => project.title === 'Android Kotlin and Java App')} />
+        break
+    }
+  }
+  
   return (
     <>
       <nav>
         <a href="index.html">Home</a>
       </nav>
-      <Header />
-      <main>
-        <h2>Projects</h2>
-        <div className='projectRow'>
-          <Projects></Projects>
-        </div>
-      </main>
+      {page === 'index' ? <Index /> : currentPage(page)}
       <Footer />
     </>
   )
