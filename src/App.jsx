@@ -3,10 +3,18 @@ import Footer from './components/Footer'
 import Header from './components/Header'
 import Project from './components/Project'
 import './index.css'
+import projectService from './services/projects'
 
 function App() {
   const [page, setPage] = useState('index')
 
+  useEffect(() => {
+    projectService
+      .getAll()
+      .then(response => {
+console.log(response.data)
+      })  
+}, [])
 
   const projects = [
     {
@@ -34,10 +42,6 @@ function App() {
   const handlePage = (title) => {
     setPage(title);
   }
-
-  useEffect(() => {
-    console.log('Current state:', page);
-  }, [page]); // Runs every time 'page' changes
 
 
   const ProjectList = () => {
