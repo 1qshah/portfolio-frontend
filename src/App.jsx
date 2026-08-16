@@ -4,55 +4,33 @@ import Header from './components/Header'
 import Project from './components/Project'
 import './index.css'
 import projectService from './services/projects'
+import imgURL from './assets/hero.png'
 
 function App() {
   const [page, setPage] = useState('index')
+  const [projects, setProjects] = useState([])
 
   useEffect(() => {
     projectService
       .getAll()
       .then(response => {
-console.log(response.data)
-      })  
-}, [])
-
-  const projects = [
-    {
-      url: `sfi-codes.html`,
-      thumbnail: "SfiCodes",
-      title: "Personal Website",
-    },
-    {
-      url: `plant-trees.html`,
-      thumbnail: "PlantTrees",
-      title: "Android Kotlin and Java App",
-    },
-    {
-      url: `clash.html`,
-      thumbnail: "Clash",
-      title: "C# Multiplayer Game",
-    },
-    {
-      url: `secure-chat.html`,
-      thumbnail: "Secure Chat",
-      title: "Java Application",
-    },
-  ]
+        setProjects(response.data)
+      })
+  }, [])
 
   const handlePage = (title) => {
     setPage(title);
   }
-
-
+  
   const ProjectList = () => {
 
     return <>
       {
         projects.map((project, i) =>
           <div className='projectColumn' key={i}>
-            <button onClick={() => { handlePage(project.title) }}>
-              <img className='thumbnail' src='/src/assets/hero.png'></img>
-              <p>{project.title}</p>
+            <button onClick={() => { handlePage(project.name) }}>
+              <img className='thumbnail' src={imgURL}></img>
+              <p>{project.name}</p>
             </button>
           </div>
 
@@ -76,24 +54,24 @@ console.log(response.data)
 
   const currentPage = (current) => {
     switch (current) {
-      case 'Personal Website':
-        return <Project project={projects.find(project => project.title === 'Personal Website')} />
+      case 'Portfolio Website':
+        return <Project project={projects.find(project => project.name === 'Portfolio Website')} />
         break
 
-      case 'Java Application':
-        return <Project project={projects.find(project => project.title === 'Java Application')} />
+      case 'Java Secure Chat':
+        return <Project project={projects.find(project => project.name === 'Java Secure Chat')} />
         break
 
-      case 'C# Multiplayer Game':
-        return <Project project={projects.find(project => project.title === 'C# Multiplayer Game')} />
+      case 'Unity Multiplayer Game':
+        return <Project project={projects.find(project => project.name === 'Unity Multiplayer Game')} />
         break
 
-      case 'Android Kotlin and Java App':
-        return <Project project={projects.find(project => project.title === 'Android Kotlin and Java App')} />
+      case 'Android App':
+        return <Project project={projects.find(project => project.name === 'Android App')} />
         break
     }
   }
-  
+
   return (
     <>
       <nav>
