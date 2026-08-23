@@ -7,7 +7,7 @@ import projectService from './services/projects'
 import imgURL from './assets/hero.png'
 
 function App() {
-  const [page, setPage] = useState('index')
+  const [page, setPage] = useState('/')
   const [projects, setProjects] = useState([])
 
   useEffect(() => {
@@ -56,28 +56,24 @@ function App() {
     switch (current) {
       case 'Portfolio Website':
         return <Project project={projects.find(project => project.name === 'Portfolio Website')} />
-        break
 
       case 'Java Secure Chat':
         return <Project project={projects.find(project => project.name === 'Java Secure Chat')} />
-        break
 
       case 'Unity Multiplayer Game':
         return <Project project={projects.find(project => project.name === 'Unity Multiplayer Game')} />
-        break
 
       case 'Android App':
         return <Project project={projects.find(project => project.name === 'Android App')} />
-        break
     }
   }
 
   return (
     <>
       <nav>
-        <a href="index.html">Home</a>
+        <button onClick={() => setPage('/')}>Home</button>
       </nav>
-      {page === 'index' ? <Index /> : currentPage(page)}
+      {page === '/' ? <Index /> : currentPage(page)}
       <Footer />
     </>
   )
