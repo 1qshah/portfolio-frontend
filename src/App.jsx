@@ -28,7 +28,7 @@ function App() {
       {
         projects.map((project, i) =>
           <div className='projectColumn' key={i}>
-            <button onClick={() => { handlePage(project.name) }}>
+            <button type='button' aria-label={project.name} onClick={() => { handlePage(project.name) }}>
               <img className='thumbnail' src={imgURL}></img>
               <p>{project.name}</p>
             </button>
