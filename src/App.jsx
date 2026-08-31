@@ -14,14 +14,14 @@ function App() {
     projectService
       .getAll()
       .then(response => {
-        setProjects(response.data)
+        Array.isArray(response.data) ? setProjects(response.data) : console.log('Wrong Data');
       })
   }, [])
 
   const handlePage = (title) => {
     setPage(title);
   }
-  
+
   const ProjectList = () => {
 
     return <>
@@ -29,7 +29,7 @@ function App() {
         projects.map((project, i) =>
           <div className='projectColumn' key={i}>
             <button type='button' aria-label={project.name} onClick={() => { handlePage(project.name) }}>
-              <img className='thumbnail' src={imgURL}></img>
+              <img className='thumbnail' src={`./assets/${project.image}.png`}></img>
               <p>{project.name}</p>
             </button>
           </div>
