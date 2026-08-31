@@ -25,9 +25,11 @@ a:visited {
 }
 
 header {
-    height: 100%;
-    text-align: center;
-
+    height: 100vh;
+display: flex;
+justify-content: center;
+flex-direction: column;
+align-items: center;
 }
 
 h1 {
